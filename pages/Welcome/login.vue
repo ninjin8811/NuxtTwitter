@@ -10,8 +10,7 @@
 
 <script>
 import InputForm from '@/components/InputForm.vue'
-import auth from '@/plugins/auth.js'
-import firebase from '@/plugins/firebase'
+import {auth} from '@/plugins/auth.js'
 
 export default {
   name: 'login-view',
@@ -29,9 +28,9 @@ export default {
   },
   methods: {
     checkInfo(input) {
-      auth(input, (isLogin) => {
-        if (isLogin) {
-          this.$router.push('/main')
+      auth(input, (uid) => {
+        if (uid) {
+          this.$router.push({path: '/main?id', query: {id: uid}})
         } else {
           this.error = true
         }

@@ -10,8 +10,7 @@
 
 <script>
 import InputForm from '@/components/InputForm.vue'
-import firebase from 'firebase/app'
-import 'firebase/auth'
+import {signUp} from '@/plugins/auth.js'
 
 export default {
   name: 'register-view',
@@ -28,12 +27,13 @@ export default {
   },
   methods: {
     signUp(input) {
-      // firebase.auth().createUserWithEmailAndPassword(input.email, input.password).then(user => {
-      //   this.$router.push('/main')
-      // }).catch(error => {
-      //   alert(error.message)
-      // })
-      this.$router.push('/main')
+      signUp(input, (uid) => {
+        if (uid) {
+          this.$router.push({path: '/main?id', query: {id: uid}})
+        } else {
+          alert("登録に失敗")
+        }
+      })
     },
   }
 }
