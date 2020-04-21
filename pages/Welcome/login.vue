@@ -30,7 +30,7 @@ export default {
     checkInfo(input) {
       auth(input, (uid) => {
         if (uid) {
-          this.$router.push({path: '/main?id', query: {id: uid}})
+          this.$router.push({name: 'Main-id', params: {id: uid}})
         } else {
           this.error = true
         }

@@ -42,6 +42,13 @@ export default {
   */
   modules: [
   ],
+  //新規登録とログイン画面のルートPathの書き換え
+  router: {
+    extendRoutes (routes) {
+      routes.find(route => route.path.includes("/Welcome/login")).path = "/login"
+      routes.find(route => route.path.includes("/Welcome/register")).path = "/register"
+    }
+  },
   /*
   ** Build configuration
   */

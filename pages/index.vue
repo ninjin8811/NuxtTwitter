@@ -1,8 +1,8 @@
 <template>
   <div class="main">
     <img src="@/assets/logo.png" class="l-logoImage">
-    <nuxt-link to="/welcome/register" class="l-register register button">新規登録</nuxt-link>
-    <nuxt-link to="/welcome/login" class="l-login login button">ログイン</nuxt-link>
+    <nuxt-link to="/register" class="l-register register button">新規登録</nuxt-link>
+    <nuxt-link to="/login" class="l-login login button">ログイン</nuxt-link>
   </div>
 </template>
 

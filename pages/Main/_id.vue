@@ -1,6 +1,7 @@
 <template>
   <div>
     <header-component class="header"></header-component>
+    <p>{{id}}</p>
     <post-component></post-component>
     <post-list v-for="post in postList" v-bind:prop-post="post" :key="post.postID"></post-list>
   </div>
@@ -19,6 +20,9 @@ export default {
     'post-list': PostList
   },
   computed: {
+    id() {
+      return this.$route.params.id
+    },
     postList() {
       return this.$store.state.postList
     }
