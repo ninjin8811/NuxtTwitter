@@ -7,8 +7,34 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-  // name: 'welcome-view'
+  mounted() {
+    // axios.get("http://localhost:8080/api/users")
+    // .then(response => {console.log(response)})
+    // axios.get("http://localhost:8080/api/posts")
+    // .then(response => {console.log(response)})
+    // axios.get("http://localhost:8080/api/countlists")
+    // .then(response => {console.log(response)})
+
+    // //成功
+    // axios.put("http://localhost:8080/api/users/1", {userId: 1, name: "Firmino", avatarPath: "aaa.jpg", iine: 20}).then(response => {
+    //   console.log(response)
+    // })
+    // //成功
+    // axios.post("http://localhost:8080/api/posts", {postId: 4, fromUserId: 3, toUserId: 1, message: "ポスト"}).then(response => {
+    //   console.log(response)
+    // })
+    // //成功
+    // axios.put("http://localhost:8080/api/countlists/1", {postId: 1, iine1: 2, iine2: 4, iine3: 1}).then(response => {
+    //   console.log(response)
+    // })
+    // //成功
+    // axios.post("http://localhost:8080/api/countlists", {postId: 3, iine1: 2, iine2: 4, iine3: 1}).then(response => {
+    //   console.log(response)
+    // })
+
+  }
 }
 </script>
 

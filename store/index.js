@@ -1,9 +1,10 @@
 export const state = () => ({
   currentUID: 1,
-    userList: [
-      { id: 1, name: 'Firmino', avatarPath: require('@/assets/firmino.jpg'), iine: 100 },
-      { id: 2, name: 'Mane', avatarPath: require('@/assets/mane.jpg'), iine: 70 },
-      { id: 3, name: 'Allison', avatarPath: require('@/assets/allison.jpg'), iine: 50 }
+    userList: [],
+    imageList: [
+      {id: 1, imageName: "firmino.jpg"},
+      {id: 2, imageName: "mane.jpg"},
+      {id: 3, imageName: "allison.jpg"}
     ],
     postList: [
       {
@@ -51,18 +52,26 @@ export const mutations = {
     post.postID = state.postList.length + 1
     state.postList.unshift(post)
   },
-  manipulateIINE (state, postID) {
+  manipulateIINE(state, postID) {
     //現在のユーザーのいいねを減らす
     state.userList.find(user => user.id === state.currentUID).iine -= 1
     //特定のポストの中の、現在のユーザーのカウントリストの値を増やす
     state.postList.find(post => post.postID === postID).iineCountList.find(user => user.id === state.currentUID).count += 1
+  },
+
+  setUsers(state, fetchedUsers) {
+    //ユーザーリストを削除
+    state.userList.length = 0
+    //ユーザーリストにユーザーを追加
+    fetchedUsers.forEach(fetchedUser => {
+      const path = require('@/assets/' + fetchedUser.avatarPath)
+      const user = {
+        id: fetchedUser.userId,
+        name: fetchedUser.name,
+        avatarPath: path,
+        iine: fetchedUser.iine
+      }
+      state.userList.push(user)
+    })
   }
 }
-
-// const store = () => new Vuex.Store({
-//   state,
-//   getters,
-//   mutations
-// })
-
-// export default store

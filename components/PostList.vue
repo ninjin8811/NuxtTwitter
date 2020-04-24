@@ -21,6 +21,8 @@
 </template>
 
 <script>
+import { putUser } from '@/plugins/user.js'
+
   export default {
     name: 'postList',
     data() {
@@ -87,7 +89,22 @@
     methods: {
       iineClicked() {
         if (this.currentUser.iine > 0) {
-          this.$store.commit('manipulateIINE', this.post.postID)
+          const image = this.$store.state.imageList.find(el => el.id === this.currentUID)
+          const putUserObj = {
+            userId: this.currentUser.id,
+            name: this.currentUser.name,
+            avatarPath: image.imageName,
+            iine: this.currentUser.iine - 1
+          }
+          console.log(putUserObj)
+          putUser(putUserObj, (callbackUser) => {
+            if (callbackUser) {
+              console.log(callbackUser)
+              this.$store.commit('manipulateIINE', this.post.postID)
+            } else {
+              console.log("ユーザーの更新に失敗")
+            }
+          })
         }
       }
     },
